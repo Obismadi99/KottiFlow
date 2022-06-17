@@ -1,98 +1,81 @@
-# Leezenflow Dokumentation
+KottiFlow ist ein Grüne-Welle-Assistent für Fahrräder. Das Ziel ist eine Unterstützung der Fahrradfahrer durch Anzeigen der Ampelphase, damit das Fahrtempo vom Fahrradfahrer angepasst werden kann.
 
-## Einleitung
-![image](https://user-images.githubusercontent.com/66736282/129550691-5f99209a-2266-44ea-8525-ba5e195e8848.png)
-Foto: Stadt Münster, Meike Reiners
-
-[Leezenflow ist ein Grüne-Welle-Assistent](https://smartcity.ms/leezenflow/) für Fahrräder. Er visualisiert die Restzeit der aktuellen Ampelphase und unterstützt dabei das richtige Tempo zu finden, um bei Grün über die nächste Ampel zu fahren.
+In der folgenden Karte kann man sehen, wo die Ampeln installiert werden.
+<img width="737" alt="KottiFlow" src="https://user-images.githubusercontent.com/107621070/174057782-e810d8c9-3013-4d28-882b-a8c0e18f9d2b.png">
 
 Dieses Dokument dient primär der technischen Dokumentation.
 
-## Andere Repositories
+##  Komponenten
+Die für dieses Projekt benötigte Hardwarekomponenten werden hier aufgelistet:
+* 3x Raspberry Pi 3
+* 3x LED Matrizen
+* 3x Adruino-Board
 
-* [Leezenflow Code](https://github.com/bCyberGmbH/leezenflow-code)
-* [Leezenflow Design](https://github.com/bCyberGmbH/leezenflow-design)
 
-## Kollaboration
+KottiFlow
 
-Wir freuen uns über konstruktive Mitarbeit 👍
+RSU (Road Side Unit)
 
-| Beschreibung | Tool |
-| -------- | -------- |
-| Diskussionen und Fragen | [GitHub Discussions](https://github.com/bCyberGmbH/leezenflow-doku/discussions) |
-| ToDo's + geplante Änderungen | [GitHub Issues](https://github.com/bCyberGmbH/leezenflow-doku/issues) |
-| Änderungen an dieser Doku | [GitHub Pull-Requests](https://github.com/bCyberGmbH/leezenflow-doku/pulls) |
+Für den Prototyp haben wir mit einem Gerät von Swarco gearbeitet. Die RSU wird in der Regel für die "Vehicle-to-everything" Kommunikation eingesetzt. Zum Beispiel kann damit die Ampelphase an (dafür ausgerüstete) Autos übertragen werden. Für das Projekt KottiFlow verwenden wir 2 RSU Geräte. Einen Sender mit Kabelverbindung zum Ampelsteuergerät und einen Empfänger am KottiFlow. Eine RSU kann mit einem LAN-Kabel betrieben werden, da diese per Power-over-Ethernet (PoE) mit Strom versorgt wird.
 
-Im Zweifel ist der richtige Einstiegspunkt immer eine Diskussion in den [GitHub Discussions](https://github.com/bCyberGmbH/leezenflow-doku/discussions) :wink: 
-
-## Komponenten
-
-**Leezenflow**
-
-Die wohl offensichtlichste Komponente zur Anzeige des Ampelstatus.
-Eine genaue Beschreibung der Komponenten und die Dokumentation zum Nachbauen befindet sich [hier](case.md).
-
-**RSU (Road Side Unit)**
-
-Für den Prototyp haben wir mit einem Gerät von Swarco gearbeitet. Die RSU wird in der Regel für die "Vehicle-to-everything" Kommunikation eingesetzt. Zum Beispiel kann damit die Ampelphase an (dafür ausgerüstete) Autos übertragen werden. Für das Projekt Leezenflow verwenden wir 2 RSU Geräte. Einen Sender mit Kabelverbindung zum Ampelsteuergerät und einen Empfänger am Leezenflow. Eine RSU kann mit einem LAN-Kabel betrieben werden, da diese per Power-over-Ethernet (PoE) mit Strom versorgt wird.
-
-**Ampelsteuergerät**
+Ampelsteuergerät
 
 Dem Steuergerät der Ampel wurde ein spezielles Prognose-Modul (Software) hinzugefügt, welches per [MQTT](https://de.wikipedia.org/wiki/MQTT) die Ampelphasen an die Sender RSU übermittelt. Diese Software muss vom Ampelhersteller implementiert werden.
 
-**Fahrrad-Ampel**
+Fahrrad-Ampel
 
-An der Ampel selbst ist keinerlei Änderung nötig. Diese wird weiterhin vom Ampelsteuergerät geregelt. Leezenflow hat keinen Rückkanal und dient nur der Visualisierung der Schaltzeiten dieser Ampel.
+An der Ampel selbst ist keinerlei Änderung nötig. Diese wird weiterhin vom Ampelsteuergerät geregelt. KottiFlow hat keinen Rückkanal und dient nur der Visualisierung der Schaltzeiten dieser Ampel.
 
-## detaillierte Anleitungen
-* [Leezenflow-Gehäuse bauen](case.md)
-* [Leezenflow Field-Guide](field-guide.md)
 
-## Übersichtskarte
 
-<a href="//umap.openstreetmap.fr/de/map/leezenflow_632092">
-<img src="https://user-images.githubusercontent.com/66736282/129551127-b6072bab-880a-4554-a954-42525d1df69f.png" />
-</a>
 
-### Datenfluss
 
-```
-🚲 <-- 📡 <*** 📡 <-- 💻 --> 🚦
-```
 
-Legende:
-* 🚲 = Leezenflow Anzeige
-* 📡 = Road Side Unit
-* 💻 = Ampel Steuergerät
-* 🚦 = Fahrrad Ampel
-* ** = Funkverbindung
-* -- = (LAN)Kabelverbindung
+Field Guide
 
-## Passwörter / sicherheitsrelevante Information
+In diesem Dokument finden sich hilfreiche Tipps für den Umgang mit Problemen im Live-Betrieb.
 
-Ansprechpartner für Zugangsdaten und Gerätekonfigurationen ist [bCyber](https://www.bcyber.de).
+WiFi Zugriff am Gerät
 
-## Projektpartner
+KottiFlow verbindet sich zu einem vordefiniertem Wartungs-Netzwerk. Dieses kann man z.B. per Handy Hotspot oder geteilter Verbindung vom Laptop erstellen. Nutzt man die richtigen Zugangsdaten (SSID und Passwort) sollte sich KottiFlow nach einer kurzen Zeit automatisch verbinden. Es ist der bCyber SSH "Wartungskey" hinterlegt.
 
-### [Stabsstelle Smart City, Stadt Münster](https://smartcity.ms)
-* Projektkoordination
-### [Amt für Mobilität und Tiefbau, Stadt Münster](https://www.stadt-muenster.de/tiefbauamt)
-* Auftraggeber
-* Umsetzung von nötigen Baumaßnahmen
-### [bCyber](https://www.bcyber.de)
-* Technische Umsetzung und Programmierung
-### [Code for Münster](https://codeformuenster.org/)
-* Unterstützung bei Umsetzung und Programmierung
-### [FH Münster, Münster School of Design](https://www.fh-muenster.de/msd/index.php)
-* Design
-* Bachelorarbeit von  [Magdalena Schmitz](https://wise20.parcours-muenster.de/arbeiten/magdalena-schmitz/) und [Leonie Winkelmann](https://wise20.parcours-muenster.de/arbeiten/leonie-winkelmann/)
-### [Swarco](https://www.swarco.com/de)
-* Technische Umsetzung der Übertragung von Ampeldaten
-### [Universität Münster, Institut für Verkehrswissenschaft](https://www.wiwi.uni-muenster.de/ivm/)
-* [Evaluation](https://www.stadt-muenster.de/sessionnet/sessionnetbi/vo0050.php?__kvonr=2004049785)
+KottiFlow Service
 
-## Unterstützer
+Der Python Code läuft als system.d Service und kann mit den folgenden Befehlen gesteuert werden:
 
-### [MÜNSTERHACK](https://muensterhack.de/)
-### [DB GoBeta](https://gobeta.de)
-### [Zweitag](https://www.zweitag.de/)
+KottiFlow stoppen: sudo service kottiflow stop
+KottiFlow starten: sudo service kottiflow start
+KottiFlow neustarten: sudo service kottiflow restart
+KottiFlow Status: sudo service kottiflow status
+
+Außerdem kann die Ausgabe vom Log mit: journalctl -u kottiflow angezeigt werden. Mit journalctl -u kottiflow -f bleibt die Ausgabe offen und streamt alle neuen Logs.
+
+KottiFlow Zeitplan
+
+Mit dem Programm at kann man KottiFlow Zeitgesteuert an und ausschalten. Das Vorgehen dabei ist wie folgt:
+
+Als Root User (sudo su)
+at -M 12:00 30.06.2021 eingeben. Der Flag -M verhindert, dass bei der Ausführung versucht wird eine E-Mail zu senden! Also benutzen!
+
+Dann bekommt man eine Eingabeaufforderung, erkennbar an dem at> im Promt. Hier kann nun der Befehl, z.B. service KottiFlow stop, eingegeben werden, diesen mit Enter bestätigen und dann mit Strg + d den Prompt beenden. Danach erscheint eine Bestätigung wie job JOBNUMMER JOBDATUM als Bestätigung, dass der Befehl geklappt hat.
+
+Mit atq kann man sich eingerichtete Jobs anschauen.
+
+Mit at -c JOBNUMMER kann man sich den genauen Inhalt des Jobs anschauen. Der Befehl ist in einem Script gewrappt. Also nicht von der langen Ausgabe beirren lassen 😉
+
+Mit at -d JOBNUMMER kann man einen Job löschen.
+
+Weitere Informationen findet man auch in der at Dokumentation: https://linux.die.net/man/1/at
+
+Netzwerk Zugriff im Steuergerät-Kasten
+
+Das Netzwerk im Steuergerät hat eine direkte Verbindung in das städtische Netzwerk. Man könnte somit z.B. aus Versehen auf andere Geräte zugreifen. Eine einfache Möglichkeit das zu verhindern ist es, den Laptop nicht in den vorhanden Switch einzustecken, sondern das vorhandene Kabel zwischen Switch und PoE-Injector abzustecken und mit einem RJ45 zu RJ45 Adapter zu arbeiten. So, dass man physikalisch nur eine Verbindung zum PoE-Injector und der Sender-RSU hat.
+
+Kein Empfang
+
+Ein Problem (z.B. nach einem Stromausfall) kann sein, dass die rsu.conf-Datei auf dem Empfänger "zurückgesetzt" wurde.
+
+Projektpartner:
+
+[<img width="70" height="70" alt="Screenshot 2022-06-16 at 13 30 30" src="https://user-images.githubusercontent.com/107621070/174060790-d9e71d79-9389-4c0c-9272-6a89a32dda01.png">](https://www.fixmycity.de) [<img width="70" height="70" alt="Screenshot 2022-06-16 at 13 23 11" src="https://user-images.githubusercontent.com/107621070/174059941-b43acfea-c277-42dd-ae67-764d6a949d9a.png">](https://radbahn.berlin/de) [<img width="120" height="70" alt="Screenshot 2022-06-16 at 13 27 14" src="https://user-images.githubusercontent.com/107621070/174060289-97034880-98d3-45f0-a3d2-32935a4fa7de.png">](https://www.bht-berlin.de) [<img width="90" height="70" alt="Screenshot 2022-06-16 at 13 31 59" src="https://user-images.githubusercontent.com/107621070/174060993-bcc7e749-0de9-486d-b3cb-b15c1ab6a82e.png">](https://www.bvg.de/de)
+
