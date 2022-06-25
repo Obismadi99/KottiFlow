@@ -11,6 +11,7 @@ Die für dieses Projekt benötigte Hardwarekomponenten werden hier aufgelistet:
 * 3x LED Matrizen
 * 3x Adruino-Board
 
+<img width="561" alt="Screenshot 2022-06-20 at 10 18 53" src="https://user-images.githubusercontent.com/107621070/174557306-728b0939-9bce-4b13-a20e-831957320059.png">
 
 KottiFlow
 
