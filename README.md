@@ -1,6 +1,7 @@
 KottiFlow ist ein Grüne-Welle-Assistent für Fahrräder. Das Ziel ist eine Unterstützung der Fahrradfahrer durch Anzeigen der Ampelphase, damit das Fahrtempo vom Fahrradfahrer angepasst werden kann.
 
-In der folgenden Karte kann man sehen, wo die Ampeln installiert werden.
+## Übersichtskarte
+<a href="(https://umap.openstreetmap.fr/de/map/kottiflow_783062#19/52.49903/13.42281)">
 <img width="737" alt="KottiFlow" src="https://user-images.githubusercontent.com/107621070/174057782-e810d8c9-3013-4d28-882b-a8c0e18f9d2b.png">
 
 Dieses Dokument dient primär der technischen Dokumentation.
@@ -12,8 +13,7 @@ Die für dieses Projekt benötigte Hardwarekomponenten werden hier aufgelistet:
 * 3x Adruino-Board
 
 <img width="561" alt="Screenshot 2022-06-20 at 10 18 53" src="https://user-images.githubusercontent.com/107621070/174557306-728b0939-9bce-4b13-a20e-831957320059.png">
-<iframe width="100%" height="300px" frameborder="0" allowfullscreen src="//umap.openstreetmap.fr/de/map/kottiflow_783062?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&allowEdit=false&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=undefined&captionBar=false"></iframe><p><a href="//umap.openstreetmap.fr/de/map/kottiflow_783062">Vollbildanzeige</a></p>
-
+  
 KottiFlow
 
 RSU (Road Side Unit)
