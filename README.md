@@ -5,7 +5,8 @@ KottiFlow ist ein Grüne-Welle-Assistent für Fahrräder. Das Ziel ist eine Unte
 <img width="737" alt="KottiFlow" src="https://user-images.githubusercontent.com/107621070/174057782-e810d8c9-3013-4d28-882b-a8c0e18f9d2b.png">
 
 Dieses Dokument dient primär der technischen Dokumentation.
-
+<a href="//github.com/Obismadi99/KottiFlow/wiki">
+Weitere informationen können auf Wiki <a href="//github.com/Obismadi99/KottiFlow/wiki"> gefunden werden
 ##  Komponenten
 Die für dieses Projekt benötigte Hardwarekomponenten werden hier aufgelistet:
 * 3x Raspberry Pi 3
