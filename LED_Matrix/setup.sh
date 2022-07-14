@@ -16,20 +16,20 @@ echo -n "Do you want to install npm and PM2? [y/N] "
 read
 if [[ "$REPLY" =~ ^(yes|y|Y)$ ]]; then
 	echo "Installing npm and PM2..."
+    sudo apt install npm
+    sudo npm install -g pm2@latest
 fi
-sudo apt install npm
-sudo npm install -g pm2@latest
 
 # Install numpy
+echo "----------------------------------------------------------------------------"
+echo "----------------------------- Install numpy --------------------------------"
+echo "----------------------------------------------------------------------------"
 echo -n "Do you want to install numpy? [y/N] "
 read
 if [[ "$REPLY" =~ ^(yes|y|Y)$ ]]; then
 	echo "Installing numpy"
+    pip3 install numpy
 fi
-echo "----------------------------------------------------------------------------"
-echo "----------------------------- Install numpy --------------------------------"
-echo "----------------------------------------------------------------------------"
-pip3 install numpy
 
 # Download configuration and python files
 echo "----------------------------------------------------------------------------"
