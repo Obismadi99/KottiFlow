@@ -27,7 +27,7 @@ echo "--------------------------------------------------------------------------
 echo -n "Do you want to install numpy? [y/N] "
 read
 if [[ "$REPLY" =~ ^(yes|y|Y)$ ]]; then
-	echo "Installing numpy"
+	echo "Installing numpy..."
     pip3 install numpy
 fi
 
