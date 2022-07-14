@@ -12,10 +12,20 @@ sudo bash rgb-matrix.sh
 echo "----------------------------------------------------------------------------"
 echo "-------------------------- Install npm and PM2 -----------------------------"
 echo "----------------------------------------------------------------------------"
+echo -n "Do you want to install npm and PM2? [y/N] "
+read
+if [[ "$REPLY" =~ ^(yes|y|Y)$ ]]; then
+	echo "Installing npm and PM2..."
+fi
 sudo apt install npm
 sudo npm install -g pm2@latest
 
 # Install numpy
+echo -n "Do you want to install numpy? [y/N] "
+read
+if [[ "$REPLY" =~ ^(yes|y|Y)$ ]]; then
+	echo "Installing numpy"
+fi
 echo "----------------------------------------------------------------------------"
 echo "----------------------------- Install numpy --------------------------------"
 echo "----------------------------------------------------------------------------"
