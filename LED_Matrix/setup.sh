@@ -38,7 +38,7 @@ echo "--------------------------------------------------------------------------
 cd ~
 curl https://raw.githubusercontent.com/Obismadi99/KottiFlow/main/LED_Matrix/Arrows.py > ~/rpi-rgb-led-matrix/bindings/python/samples/Arrows.py
 curl https://raw.githubusercontent.com/Obismadi99/KottiFlow/main/LED_Matrix/ecosystem.config.js > ~/ecosystem.config.js
-
+curl https://raw.githubusercontent.com/Obismadi99/KottiFlow/main/LED_Matrix/GreenWave.py > ~/rpi-rgb-led-matrix/bindings/python/samples/GreenWave.py
 # Setup automatic start for Arrows.py
 echo "----------------------------------------------------------------------------"
 echo "------------------- Setup automatic start for Arrows.py --------------------"
