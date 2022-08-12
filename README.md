@@ -1,6 +1,4 @@
-Dieses Dokument dient primär der technischen Dokumentation.
-
-Weitere informationen können auf Wiki (https://github.com/Obismadi99/KottiFlow/wiki") gefunden werden
+Weitere informationen über das Projekt können auf Wiki (https://github.com/Obismadi99/KottiFlow/wiki") gefunden werden
 
 KottiFlow ist ein Grüne-Welle-Assistent für Fahrräder. Das Ziel ist eine Unterstützung der Fahrradfahrer durch Anzeigen der Ampelphase, damit das Fahrtempo vom Fahrradfahrer angepasst werden kann.
 
@@ -8,77 +6,6 @@ KottiFlow ist ein Grüne-Welle-Assistent für Fahrräder. Das Ziel ist eine Unte
 <a href="//umap.openstreetmap.fr/de/map/kottiflow_783062#19/52.49903/13.42281">
 <img width="737" alt="KottiFlow" src="https://user-images.githubusercontent.com/107621070/174057782-e810d8c9-3013-4d28-882b-a8c0e18f9d2b.png">
 
-
-##  Komponenten
-Die für dieses Projekt benötigte Hardwarekomponenten werden hier aufgelistet:
-* 3x Raspberry Pi 3
-* 3x LED Matrizen
-* 3x Adruino-Board
-
-<img width="561" alt="Screenshot 2022-06-20 at 10 18 53" src="https://user-images.githubusercontent.com/107621070/174557306-728b0939-9bce-4b13-a20e-831957320059.png">
-  
-KottiFlow
-
-RSU (Road Side Unit)
-
-Für den Prototyp haben wir mit einem Gerät von Swarco gearbeitet. Die RSU wird in der Regel für die "Vehicle-to-everything" Kommunikation eingesetzt. Zum Beispiel kann damit die Ampelphase an (dafür ausgerüstete) Autos übertragen werden. Für das Projekt KottiFlow verwenden wir 2 RSU Geräte. Einen Sender mit Kabelverbindung zum Ampelsteuergerät und einen Empfänger am KottiFlow. Eine RSU kann mit einem LAN-Kabel betrieben werden, da diese per Power-over-Ethernet (PoE) mit Strom versorgt wird.
-
-Ampelsteuergerät
-
-Dem Steuergerät der Ampel wurde ein spezielles Prognose-Modul (Software) hinzugefügt, welches per [MQTT](https://de.wikipedia.org/wiki/MQTT) die Ampelphasen an die Sender RSU übermittelt. Diese Software muss vom Ampelhersteller implementiert werden.
-
-Fahrrad-Ampel
-
-An der Ampel selbst ist keinerlei Änderung nötig. Diese wird weiterhin vom Ampelsteuergerät geregelt. KottiFlow hat keinen Rückkanal und dient nur der Visualisierung der Schaltzeiten dieser Ampel.
-
-
-
-
-
-
-Field Guide
-
-In diesem Dokument finden sich hilfreiche Tipps für den Umgang mit Problemen im Live-Betrieb.
-
-WiFi Zugriff am Gerät
-
-KottiFlow verbindet sich zu einem vordefiniertem Wartungs-Netzwerk. Dieses kann man z.B. per Handy Hotspot oder geteilter Verbindung vom Laptop erstellen. Nutzt man die richtigen Zugangsdaten (SSID und Passwort) sollte sich KottiFlow nach einer kurzen Zeit automatisch verbinden. Es ist der bCyber SSH "Wartungskey" hinterlegt.
-
-KottiFlow Service
-
-Der Python Code läuft als system.d Service und kann mit den folgenden Befehlen gesteuert werden:
-
-KottiFlow stoppen: sudo service kottiflow stop
-KottiFlow starten: sudo service kottiflow start
-KottiFlow neustarten: sudo service kottiflow restart
-KottiFlow Status: sudo service kottiflow status
-
-Außerdem kann die Ausgabe vom Log mit: journalctl -u kottiflow angezeigt werden. Mit journalctl -u kottiflow -f bleibt die Ausgabe offen und streamt alle neuen Logs.
-
-KottiFlow Zeitplan
-
-Mit dem Programm at kann man KottiFlow Zeitgesteuert an und ausschalten. Das Vorgehen dabei ist wie folgt:
-
-Als Root User (sudo su)
-at -M 12:00 30.06.2021 eingeben. Der Flag -M verhindert, dass bei der Ausführung versucht wird eine E-Mail zu senden! Also benutzen!
-
-Dann bekommt man eine Eingabeaufforderung, erkennbar an dem at> im Promt. Hier kann nun der Befehl, z.B. service KottiFlow stop, eingegeben werden, diesen mit Enter bestätigen und dann mit Strg + d den Prompt beenden. Danach erscheint eine Bestätigung wie job JOBNUMMER JOBDATUM als Bestätigung, dass der Befehl geklappt hat.
-
-Mit atq kann man sich eingerichtete Jobs anschauen.
-
-Mit at -c JOBNUMMER kann man sich den genauen Inhalt des Jobs anschauen. Der Befehl ist in einem Script gewrappt. Also nicht von der langen Ausgabe beirren lassen 😉
-
-Mit at -d JOBNUMMER kann man einen Job löschen.
-
-Weitere Informationen findet man auch in der at Dokumentation: https://linux.die.net/man/1/at
-
-Netzwerk Zugriff im Steuergerät-Kasten
-
-Das Netzwerk im Steuergerät hat eine direkte Verbindung in das städtische Netzwerk. Man könnte somit z.B. aus Versehen auf andere Geräte zugreifen. Eine einfache Möglichkeit das zu verhindern ist es, den Laptop nicht in den vorhanden Switch einzustecken, sondern das vorhandene Kabel zwischen Switch und PoE-Injector abzustecken und mit einem RJ45 zu RJ45 Adapter zu arbeiten. So, dass man physikalisch nur eine Verbindung zum PoE-Injector und der Sender-RSU hat.
-
-Kein Empfang
-
-Ein Problem (z.B. nach einem Stromausfall) kann sein, dass die rsu.conf-Datei auf dem Empfänger "zurückgesetzt" wurde.
 
 Projektpartner:
 
