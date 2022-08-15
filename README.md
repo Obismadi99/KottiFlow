@@ -1,9 +1,8 @@
 KottiFlow ist ein Grüne-Welle-Assistent für Fahrräder. Durch den Einsatz von Raspberry Pi's und LED-Matrizen ist das Ziel dieses Projekts, eine Unterstützung der Fahrradfahrer durch Anzeigen der Ampelphase zu ermöglichen, damit das Fahrtempo vom Fahrradfahrer angepasst werden kann.
 
 ## Übersichtskarte
-<a href="//umap.openstreetmap.fr/de/map/kottiflow_783062#19/52.49903/13.42281">
 <img width="737" alt="KottiFlow" src="https://user-images.githubusercontent.com/107621070/174057782-e810d8c9-3013-4d28-882b-a8c0e18f9d2b.png">
-
+https://umap.openstreetmap.fr/de/map/kottiflow_783062#19/52.49903/13.42281
 
 Projektpartner:
 
